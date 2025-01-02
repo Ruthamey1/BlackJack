@@ -1,14 +1,14 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[6]:
 
 
 #Using Jupyer notebook converts to .py so can interact across different notebooks
 get_ipython().system('jupyter nbconvert --to script Deck.ipynb')
 
 
-# In[1]:
+# In[2]:
 
 
 #Importing neccesary library
@@ -24,7 +24,7 @@ from PIL import Image, ImageTk
 from functools import partial
 
 
-# In[2]:
+# In[3]:
 
 
 class Cards:
@@ -87,7 +87,7 @@ class Cards:
             self.count += self.card[0]
 
 
-# In[3]:
+# In[4]:
 
 
 #Moves inherites Cards
@@ -95,6 +95,11 @@ class Moves(Cards):
 
     def __init__(self):
         super().__init__()
+
+    #Picking a new card without print statements
+    def hit_another_player(self):
+        self.picking_a_card()
+        self.counting_cards() 
 
     #picking a new card, counting it, seeing if you're bust
     def hit(self):
@@ -112,7 +117,7 @@ class Moves(Cards):
         print(f'Your final count is {self.count}')
 
 
-# In[4]:
+# In[5]:
 
 
 #Visualising cards which have been chosen
@@ -300,6 +305,12 @@ class Visualisation(Moves):
         self.add_button5(frame_buttons, frame_plot)
         
         root.mainloop()
+
+
+# In[ ]:
+
+
+
 
 
 # In[ ]:

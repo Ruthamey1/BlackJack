@@ -1,21 +1,21 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[6]:
 
 
 #Incase needed as a .py file
 get_ipython().system('jupyter nbconvert --to script blackjack_player.ipynb')
 
 
-# In[2]:
+# In[1]:
 
 
 #Importing classes from the file Deck
 from Deck import Cards, Moves, Visualisation
 
 
-# In[3]:
+# In[2]:
 
 
 #Adding player to play against
@@ -26,11 +26,11 @@ def added_player():
     game.picking_a_card()
     game.counting_cards() 
     while game.count < 15:
-        game.hit()
+        game.hit_another_player()
     return game.count
 
 
-# In[4]:
+# In[3]:
 
 
 #Calling player
@@ -38,7 +38,7 @@ def added_player():
 player1 = added_player()
 
 
-# In[5]:
+# In[4]:
 
 
 #Funtion to play the game
