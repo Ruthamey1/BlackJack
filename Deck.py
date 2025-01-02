@@ -21,9 +21,10 @@ import matplotlib.pyplot as plt
 from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 from tkinter import Frame, Label, Tk
 from PIL import Image, ImageTk
+from functools import partial
 
 
-# In[1]:
+# In[2]:
 
 
 class Cards:
@@ -115,14 +116,12 @@ class Moves(Cards):
 
 
 #Visualising cards which have been chosen
-#Function to read image of second card
-from functools import partial
-
 class Visualisation(Moves):
     
     def __init__(self):
         super().__init__()
-    
+
+    #Function to read image of first card
     def card1(self, frame_plot):
         card1 = f'{self.card[-2]}_of_{self.card[-1]}s.png'
         test = cv2.imread(f'PNG-cards-1.3/{card1}')
@@ -146,35 +145,36 @@ class Visualisation(Moves):
         photo = ImageTk.PhotoImage(image)
         self.display_photo(photo, frame_plot)
 
-    #Function to read image of second card
+    #Function to read image of third card
     def add_card(self, frame_plot):
         card2 = f'{self.card[-6]}_of_{self.card[-5]}s.png'
         test = cv2.imread(f'PNG-cards-1.3/{card2}')
         test = cv2.cvtColor(test, cv2.COLOR_BGR2RGB)
-        #Reszing image
+        #Resizing image
         test = cv2.resize(test, (200,300), interpolation=cv2.INTER_AREA)
         #Converting image to PIL format
         image = Image.fromarray(test)
         photo = ImageTk.PhotoImage(image)
         self.display_photo(photo, frame_plot)
 
-     #Function to read image of second card
+    #Function to read image of fourth card
     def add_card4(self, frame_plot):
         card2 = f'{self.card[-8]}_of_{self.card[-7]}s.png'
         test = cv2.imread(f'PNG-cards-1.3/{card2}')
         test = cv2.cvtColor(test, cv2.COLOR_BGR2RGB)
-        #Reszing image
+        #Resizing image
         test = cv2.resize(test, (200,300), interpolation=cv2.INTER_AREA)
         #Converting image to PIL format
         image = Image.fromarray(test)
         photo = ImageTk.PhotoImage(image)
         self.display_photo(photo, frame_plot)
-
+        
+    #Function to read image of fifth card
     def add_card5(self, frame_plot):
         card2 = f'{self.card[-10]}_of_{self.card[-9]}s.png'
         test = cv2.imread(f'PNG-cards-1.3/{card2}')
         test = cv2.cvtColor(test, cv2.COLOR_BGR2RGB)
-        #Reszing image
+        #Resizing image
         test = cv2.resize(test, (200,300), interpolation=cv2.INTER_AREA)
         #Converting image to PIL format
         image = Image.fromarray(test)
@@ -198,22 +198,22 @@ class Visualisation(Moves):
         second_card = ttk.Button(frame_buttons, text="Second Card", command=partial(self.card2, frame_plot))
         second_card.pack(pady=5, fill='x')
 
+    #Adding a button to see third card
     def add_button(self, frame_buttons, frame_plot):
-        #Adding a button to see first card
         next_card3 = ttk.Button(frame_buttons, text="Third Card", command=partial(self.add_card, frame_plot))
         next_card3.pack(pady=5, fill='x')
 
+    #Adding a button to see fourth card
     def add_button4(self, frame_buttons, frame_plot):
-        #Adding a button to see first card
         next_card4 = ttk.Button(frame_buttons, text="Fourth Card", command=partial(self.add_card4, frame_plot))
         next_card4.pack(pady=5, fill='x')
 
+    #Adding a button to see fifth card
     def add_button5(self, frame_buttons, frame_plot):
-        #Adding a button to see first card
         next_card5 = ttk.Button(frame_buttons, text="Fifth Card", command=partial(self.add_card5, frame_plot))
         next_card5.pack(pady=5, fill='x')
     
-    
+    #Displaying first 2 cards
     def creation(self):
         #Creating the main Tkinter window
         root = tk.Tk()
@@ -232,6 +232,7 @@ class Visualisation(Moves):
         
         root.mainloop()
 
+    #Displaying 3 cards
     def creation2(self):
         #Creating the main Tkinter window
         root = tk.Tk()
@@ -252,6 +253,7 @@ class Visualisation(Moves):
         
         root.mainloop()
 
+    #Displaying 4 cards
     def creation3(self):
         #Creating the main Tkinter window
         root = tk.Tk()
@@ -273,7 +275,8 @@ class Visualisation(Moves):
         self.add_button4(frame_buttons, frame_plot)
         
         root.mainloop()
-        
+
+    #Displaying 5 cards
     def creation4(self):
         #Creating the main Tkinter window
         root = tk.Tk()
@@ -297,15 +300,6 @@ class Visualisation(Moves):
         self.add_button5(frame_buttons, frame_plot)
         
         root.mainloop()
-
-
-# In[5]:
-
-
-# Test the class
-#if __name__ == "__main__":
-#   app = Visualisation()
-#   app.creation()
 
 
 # In[ ]:
